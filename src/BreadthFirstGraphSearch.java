@@ -1,10 +1,12 @@
+import java.util.HashSet;
 import java.util.LinkedList;
 
-public class BreadthFirstTreeSearch {
+public class BreadthFirstGraphSearch {
 	private static int expandedNodes = 0; 
 	
 	public static boolean bfts(Grid g, Coord goal) {
 		LinkedList<Node> fringe = new LinkedList<Node>(); 
+		HashSet<Node> closed = new HashSet<Node>();
 		
 		fringe.add(g.getRoot());
 		
@@ -15,14 +17,18 @@ public class BreadthFirstTreeSearch {
 			}
 			
 			current = fringe.pop(); 
-			if(current.c.equals(goal)) {
-				return true; 
-			}
+			closed.add(current);
 			
 			g.expandNode(current);
 			expandedNodes++; 
 			for(Node n : current.getNeighbors()) {
-				fringe.add(n);
+				if(n.c.equals(goal)) {
+					return true; 
+				}
+				
+				if(!closed.contains(n)) {
+					fringe.add(n);
+				}
 			}
 			
 		}
