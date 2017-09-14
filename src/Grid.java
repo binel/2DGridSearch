@@ -17,6 +17,10 @@ public class Grid {
 		this.grid.put(this.root.c, this.root);
 	}
 	
+	public Node getRoot() {
+		return this.root; 
+	}
+	
 	public void addNode(Node n) {
 		if(this.grid.containsKey(n.c)) {
 			return;
@@ -43,6 +47,13 @@ public class Grid {
 			n.s_neigh = neigh; 
 		}
 		grid.put(n.c, n);
+	}
+	
+	public void expandNode(Node n) {
+		this.addNode(new Node(new Coord(n.c.x + 1, n.c.y)));
+		this.addNode(new Node(new Coord(n.c.x - 1, n.c.y)));
+		this.addNode(new Node(new Coord(n.c.x, n.c.y + 1)));
+		this.addNode(new Node(new Coord(n.c.x, n.c.y - 1)));
 	}
 	
 	public void displayGrid() {
@@ -96,10 +107,9 @@ public class Grid {
 	
 	public static void main(String args[]) {
 		Grid g = new Grid(); 
-		g.addNode(new Node(new Coord(-1, 0)));
-		g.addNode(new Node(new Coord(0, -1)));
-		g.addNode(new Node(new Coord(1, 0)));
-		g.addNode(new Node(new Coord(0, 1)));
+		g.expandNode(g.root);
+		g.expandNode(g.root.n_neigh);
+		g.expandNode(g.root.w_neigh);
 		g.displayGrid();
 	}
 }
