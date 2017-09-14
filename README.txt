@@ -1,0 +1,1 @@
+This is just a small project I did to help me understand some homework and to practice search algorithms
