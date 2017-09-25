@@ -6,6 +6,10 @@ public class Node {
 	public Node w_neigh = null; 
 	public Node e_neigh = null; 
 	
+	public boolean isExpanded = false; 
+	public boolean isGoal = false; 
+	public boolean isActive = false; 
+	
 	public Coord c; 
 	
 	public Node(Coord c) {

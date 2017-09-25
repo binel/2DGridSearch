@@ -24,7 +24,7 @@ public class Grid {
 	
 	public void solutionDelay() {
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

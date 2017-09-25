@@ -13,14 +13,7 @@ public class Main {
 		frame.setResizable(false);
 		frame.setVisible(true);
 		
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		
-		BreadthFirstGraphSearch.bfts(g, new Coord(5,5));
+		BreadthFirstGraphSearch.bfgs(g, new Coord(-3,3));
 		
 	}
 }

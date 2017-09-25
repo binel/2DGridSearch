@@ -15,18 +15,24 @@ public class BreadthFirstTreeSearch {
 			if(fringe.isEmpty()) {
 				return false; 
 			}
-			
 			current = fringe.pop(); 
+			current.isActive = true; 
+			
 			if(current.c.equals(goal)) {
+				current.isGoal = true;
 				return true; 
 			}
 			
 			g.expandNode(current);
 			expandedNodes++; 
+			current.isExpanded = true;
+			
 			for(Node n : current.getNeighbors()) {
 				fringe.add(n);
 			}
 			
+			g.solutionDelay();
+			current.isActive = false; 
 		}
 	}
 }

@@ -27,7 +27,15 @@ public class GridDisplay extends JPanel {
 		final int shift = 250; 
 		
 		for(Node n : grid.getGrid().values()) {
-			g2.setPaint(Color.BLUE);
+			if(n.isGoal) {
+				g2.setPaint(Color.GREEN);
+			} else if(n.isActive){
+				g2.setPaint(Color.YELLOW);
+			} else if(n.isExpanded) {
+				g2.setPaint(Color.RED);
+			} else {
+				g2.setPaint(Color.BLUE);
+			}
 			g2.fillOval(shift + (n.c.x * gridDist) - radius, shift + (n.c.y * gridDist) - radius, radius * 2, radius*2);
 			
 			g2.setPaint(Color.BLACK);

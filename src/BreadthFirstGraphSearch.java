@@ -4,7 +4,7 @@ import java.util.LinkedList;
 public class BreadthFirstGraphSearch {
 	private static int expandedNodes = 0; 
 	
-	public static boolean bfts(Grid g, Coord goal) {
+	public static boolean bfgs(Grid g, Coord goal) {
 		LinkedList<Node> fringe = new LinkedList<Node>(); 
 		HashSet<Node> closed = new HashSet<Node>();
 		
@@ -12,7 +12,6 @@ public class BreadthFirstGraphSearch {
 		
 		Node current; 
 		while(true) {
-			g.solutionDelay();
 			
 			if(fringe.isEmpty()) {
 				return false; 
@@ -20,17 +19,22 @@ public class BreadthFirstGraphSearch {
 			
 			current = fringe.pop(); 
 			closed.add(current);
-			
+
 			g.expandNode(current);
 			expandedNodes++; 
+			current.isExpanded = true; 
 			for(Node n : current.getNeighbors()) {
+				n.isActive = true; 
+				g.solutionDelay();
 				if(n.c.equals(goal)) {
+					n.isGoal = true; 
 					return true; 
 				}
 				
 				if(!closed.contains(n)) {
 					fringe.add(n);
 				}
+				n.isActive = false; 
 			}
 			
 		}
