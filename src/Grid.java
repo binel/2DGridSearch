@@ -23,10 +23,12 @@ public class Grid {
 	}
 	
 	public void solutionDelay() {
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		while(!gd.nextStepReady) {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		gd.step();
 	}

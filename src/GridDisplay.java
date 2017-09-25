@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 public class GridDisplay extends JPanel {
 	private Grid grid; 
+	public boolean nextStepReady = false; 
 	
 	public GridDisplay(Grid g) {
 		super(); 
@@ -52,10 +53,12 @@ public class GridDisplay extends JPanel {
 				g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.s_neigh.c.x * gridDist), shift + (n.s_neigh.c.y * gridDist));
 			}
 		}
+		nextStepReady = true; 
 	}
 	
 	
 	public void step() {
+		nextStepReady = false; 
 		repaint(); 
 	}
 }
