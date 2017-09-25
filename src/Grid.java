@@ -10,11 +10,25 @@ import java.util.HashMap;
 public class Grid {
 	private HashMap<Coord, Node> grid;
 	private Node root; 
+	private GridDisplay gd; 
 	
 	public Grid() {
 		this.grid = new HashMap<Coord, Node>();
 		this.root = new Node(new Coord(0,0));
 		this.grid.put(this.root.c, this.root);
+	}
+	
+	public void registerDisplay(GridDisplay display) {
+		gd = display; 
+	}
+	
+	public void solutionDelay() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		gd.step();
 	}
 	
 	public Node getRoot() {

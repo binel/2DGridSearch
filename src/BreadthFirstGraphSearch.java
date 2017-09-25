@@ -12,6 +12,8 @@ public class BreadthFirstGraphSearch {
 		
 		Node current; 
 		while(true) {
+			g.solutionDelay();
+			
 			if(fringe.isEmpty()) {
 				return false; 
 			}
