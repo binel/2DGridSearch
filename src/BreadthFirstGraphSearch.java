@@ -28,6 +28,7 @@ public class BreadthFirstGraphSearch {
 				g.solutionDelay();
 				if(n.c.equals(goal)) {
 					n.isGoal = true; 
+					g.solutionDelay();
 					return true; 
 				}
 				

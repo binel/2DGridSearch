@@ -23,14 +23,14 @@ public class Grid {
 	}
 	
 	public void solutionDelay() {
+		gd.step();
 		while(!gd.nextStepReady) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		gd.step();
 	}
 	
 	public Node getRoot() {
@@ -41,7 +41,7 @@ public class Grid {
 		return this.grid; 
 	}
 	
-	public void addNode(Node n) {
+	public synchronized void addNode(Node n) {
 		if(this.grid.containsKey(n.c)) {
 			return;
 		}

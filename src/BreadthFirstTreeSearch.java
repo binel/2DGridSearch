@@ -20,6 +20,7 @@ public class BreadthFirstTreeSearch {
 			
 			if(current.c.equals(goal)) {
 				current.isGoal = true;
+				g.solutionDelay();
 				return true; 
 			}
 			
