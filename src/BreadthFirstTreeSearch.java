@@ -27,13 +27,4 @@ public class BreadthFirstTreeSearch {
 			
 		}
 	}
-	
-	public static void main(String args[]) {
-		Grid g = new Grid(); 
-		for(int i = 0; i < 20; i++) {
-			expandedNodes = 0; 
-			bfts(g, new Coord(i, i));
-			System.out.println("Goal = (" + i + "," + i + ") Nodes Expanded = " + expandedNodes);
-		}
-	}
 }

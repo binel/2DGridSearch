@@ -21,6 +21,10 @@ public class Grid {
 		return this.root; 
 	}
 	
+	public HashMap<Coord, Node> getGrid() {
+		return this.grid; 
+	}
+	
 	public void addNode(Node n) {
 		if(this.grid.containsKey(n.c)) {
 			return;
@@ -54,62 +58,5 @@ public class Grid {
 		this.addNode(new Node(new Coord(n.c.x - 1, n.c.y)));
 		this.addNode(new Node(new Coord(n.c.x, n.c.y + 1)));
 		this.addNode(new Node(new Coord(n.c.x, n.c.y - 1)));
-	}
-	
-	public void displayGrid() {
-		new Display(this); 
-	}
-	
-	public class Display extends Frame {
-		private Grid grid;
-		private int shift = 250; 
-		
-		public Display(Grid grid) {
-			this.grid = grid; 
-			
-			setSize(500, 500);
-			setVisible(true); 
-			
-			addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent e) {
-					dispose(); 
-					System.exit(0);
-				}
-			});
-		}
-		
-		public void paint(Graphics g) {
-			Graphics2D g2 = (Graphics2D) g;
-			
-			final int radius = 5;
-			final int gridDist = 20; 
-			
-			for(Node n : grid.grid.values()) {
-				g2.setPaint(Color.BLUE);
-				g2.fillOval(shift + (n.c.x * gridDist) - radius, shift + (n.c.y * gridDist) - radius, radius * 2, radius*2);
-				
-				g2.setPaint(Color.BLACK);
-				if(n.e_neigh != null) {
-					g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.e_neigh.c.x * gridDist), shift + (n.e_neigh.c.y * gridDist));
-				}
-				if(n.w_neigh != null) {
-					g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.w_neigh.c.x * gridDist), shift + (n.w_neigh.c.y * gridDist));
-				}
-				if(n.n_neigh != null) {
-					g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.n_neigh.c.x * gridDist), shift + (n.n_neigh.c.y * gridDist));
-				}
-				if(n.s_neigh != null) {
-					g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.s_neigh.c.x * gridDist), shift + (n.s_neigh.c.y * gridDist));
-				}
-			}
-		}
-	}
-	
-	public static void main(String args[]) {
-		Grid g = new Grid(); 
-		g.expandNode(g.root);
-		g.expandNode(g.root.n_neigh);
-		g.expandNode(g.root.w_neigh);
-		g.displayGrid();
 	}
 }
