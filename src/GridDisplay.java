@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 
 import javax.swing.JPanel;
 
@@ -25,24 +26,24 @@ public class GridDisplay extends JPanel {
 		
 		final int radius = 5;
 		final int gridDist = 20; 
-		final int shift = 250; 
 		
+		g2.translate(250, 250);
+		g2.scale(1,-1);
 		for(Node n : grid.getGrid().values()) {
 			g2.setPaint(Color.BLACK);
 			if(n.e_neigh != null) {
-				g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.e_neigh.c.x * gridDist), shift + (n.e_neigh.c.y * gridDist));
+				g2.drawLine(n.c.x * gridDist, n.c.y * gridDist, n.e_neigh.c.x * gridDist, n.e_neigh.c.y * gridDist);
 			}
 			if(n.w_neigh != null) {
-				g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.w_neigh.c.x * gridDist), shift + (n.w_neigh.c.y * gridDist));
+				g2.drawLine(n.c.x * gridDist, n.c.y * gridDist, n.w_neigh.c.x * gridDist, n.w_neigh.c.y * gridDist);
 			}
 			if(n.n_neigh != null) {
-				g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.n_neigh.c.x * gridDist), shift + (n.n_neigh.c.y * gridDist));
+				g2.drawLine(n.c.x * gridDist, n.c.y * gridDist, n.n_neigh.c.x * gridDist, n.n_neigh.c.y * gridDist);
 			}
 			if(n.s_neigh != null) {
-				g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.s_neigh.c.x * gridDist), shift + (n.s_neigh.c.y * gridDist));
+				g2.drawLine(n.c.x * gridDist, n.c.y * gridDist, n.s_neigh.c.x * gridDist, n.s_neigh.c.y * gridDist);
 			}
 		}
-		
 		for(Node n : grid.getGrid().values()) {
 			if(n.isGoal) {
 				g2.setPaint(Color.GREEN);
@@ -53,7 +54,7 @@ public class GridDisplay extends JPanel {
 			} else {
 				g2.setPaint(Color.BLUE);
 			}
-			g2.fillOval(shift + (n.c.x * gridDist) - radius, shift + (n.c.y * gridDist) - radius, radius * 2, radius*2);			
+			g2.fillOval((n.c.x * gridDist) - radius, (n.c.y * gridDist) - radius, radius * 2, radius*2);			
 		}
 		nextStepReady = true; 
 	}
