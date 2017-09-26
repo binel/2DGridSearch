@@ -29,7 +29,9 @@ public class BreadthFirstTreeSearch {
 			current.isExpanded = true;
 			
 			for(Node n : current.getNeighbors()) {
-				fringe.add(n);
+				if(!fringe.contains(n)) {
+					fringe.add(n);
+				}
 			}
 			
 			g.solutionDelay();

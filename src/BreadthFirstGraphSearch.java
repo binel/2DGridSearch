@@ -32,7 +32,7 @@ public class BreadthFirstGraphSearch {
 					return true; 
 				}
 				
-				if(!closed.contains(n)) {
+				if(!closed.contains(n) && !fringe.contains(n)) {
 					fringe.add(n);
 				}
 				n.isActive = false; 
