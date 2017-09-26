@@ -28,17 +28,6 @@ public class GridDisplay extends JPanel {
 		final int shift = 250; 
 		
 		for(Node n : grid.getGrid().values()) {
-			if(n.isGoal) {
-				g2.setPaint(Color.GREEN);
-			} else if(n.isActive){
-				g2.setPaint(Color.YELLOW);
-			} else if(n.isExpanded) {
-				g2.setPaint(Color.RED);
-			} else {
-				g2.setPaint(Color.BLUE);
-			}
-			g2.fillOval(shift + (n.c.x * gridDist) - radius, shift + (n.c.y * gridDist) - radius, radius * 2, radius*2);
-			
 			g2.setPaint(Color.BLACK);
 			if(n.e_neigh != null) {
 				g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.e_neigh.c.x * gridDist), shift + (n.e_neigh.c.y * gridDist));
@@ -52,6 +41,19 @@ public class GridDisplay extends JPanel {
 			if(n.s_neigh != null) {
 				g2.drawLine(shift + (n.c.x * gridDist), shift + (n.c.y * gridDist), shift + (n.s_neigh.c.x * gridDist), shift + (n.s_neigh.c.y * gridDist));
 			}
+		}
+		
+		for(Node n : grid.getGrid().values()) {
+			if(n.isGoal) {
+				g2.setPaint(Color.GREEN);
+			} else if(n.isActive){
+				g2.setPaint(Color.YELLOW);
+			} else if(n.isExpanded) {
+				g2.setPaint(Color.RED);
+			} else {
+				g2.setPaint(Color.BLUE);
+			}
+			g2.fillOval(shift + (n.c.x * gridDist) - radius, shift + (n.c.y * gridDist) - radius, radius * 2, radius*2);			
 		}
 		nextStepReady = true; 
 	}

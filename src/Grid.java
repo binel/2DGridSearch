@@ -26,7 +26,7 @@ public class Grid {
 		gd.step();
 		while(!gd.nextStepReady) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -4,7 +4,7 @@ import java.util.LinkedList;
 public class BreadthFirstGraphSearch {
 	private static int expandedNodes = 0; 
 	
-	public static boolean bfgs(Grid g, Coord goal) {
+	public static boolean search(Grid g, Coord goal) {
 		LinkedList<Node> fringe = new LinkedList<Node>(); 
 		HashSet<Node> closed = new HashSet<Node>();
 		
