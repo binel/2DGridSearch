@@ -13,7 +13,7 @@ public class Main {
 		frame.setResizable(false);
 		frame.setVisible(true);
 		
-		BreadthFirstGraphSearch.search(g, new Coord(-1,-1));
+		BreadthFirstGraphSearch.search(g, new Coord(5,5));
 		
 	}
 }
