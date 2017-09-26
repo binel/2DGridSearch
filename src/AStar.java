@@ -21,6 +21,10 @@ public class AStar {
 			
 			if(goalTest(current, goal)) {
 				current.isGoal = true;
+				while(cameFrom.keySet().contains(current)) { 
+					current = cameFrom.get(current);
+					current.isGoal = true; 
+				}
 				g.solutionDelay();
 				return; 
 			}
